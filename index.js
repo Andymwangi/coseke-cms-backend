@@ -21,6 +21,7 @@ const switchTenantDatabase = require("./middleware/tenantMiddleware");
 const filterByTenant = require("./middleware/filterTenant");
 const geminiRoutes = require("./routes/geminiRoutes");
 const annotationsRoutes = require('./routes/annotations');
+const reportsRoutes = require("./routes/reportsRoutes");
 
 // Create an Express app
 const app = express();
@@ -72,6 +73,7 @@ app.use('/api', annotationsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/gemini", geminiRoutes);
 app.use("/api/bulk", bulkRoutes);
+app.use("/api/reports", reportsRoutes);
 app.use("/api/attachments", attachmentRoutes);
 app.use("/api/logs", logsRoutes);
 app.use("/api/users", userRoutes);

@@ -1,0 +1,328 @@
+const PDFDocument = require("pdfkit");
+const xlsx = require("xlsx");
+const AllContracts = require("../models/AllContracts");
+const { format } = require("date-fns");
+
+// Helper function to format date
+const formatDate = (date) => {
+  if (!date) return "N/A";
+  try {
+    return format(new Date(date), "dd/MM/yyyy");
+  } catch (error) {
+    return "N/A";
+  }
+};
+
+// Helper function to safely get field value
+const getFieldValue = (contract, fieldName, defaultValue = "N/A") => {
+  return contract[fieldName] || defaultValue;
+};
+
+// Generate PDF Report
+async function generatePDFReport(req, res) {
+  try {
+    // Fetch all contracts
+    const contracts = await AllContracts.find(req.queryFilter)
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    // Create a new PDF document
+    const doc = new PDFDocument({
+      size: "A4",
+      layout: "landscape",
+      margin: 30,
+    });
+
+    // Set response headers
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=contracts-report-${format(new Date(), "yyyy-MM-dd")}.pdf`
+    );
+
+    // Pipe the PDF to the response
+    doc.pipe(res);
+
+    // Add title
+    doc.fontSize(20).font("Helvetica-Bold").text("Contracts Report", {
+      align: "center",
+    });
+
+    doc.moveDown(0.5);
+    doc
+      .fontSize(10)
+      .font("Helvetica")
+      .text(`Generated on: ${format(new Date(), "dd/MM/yyyy HH:mm")}`, {
+        align: "center",
+      });
+
+    doc
+      .fontSize(10)
+      .text(`Total Contracts: ${contracts.length}`, { align: "center" });
+
+    doc.moveDown(1);
+
+    // Add summary statistics
+    const statusCounts = contracts.reduce((acc, contract) => {
+      const status = contract.status || "Unknown";
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, {});
+
+    doc.fontSize(12).font("Helvetica-Bold").text("Summary by Status:", {
+      underline: true,
+    });
+    doc.moveDown(0.3);
+    doc.fontSize(10).font("Helvetica");
+    Object.entries(statusCounts).forEach(([status, count]) => {
+      doc.text(`  ${status}: ${count}`);
+    });
+
+    doc.moveDown(1);
+    doc.addPage();
+
+    // Table configuration
+    const tableTop = 50;
+    const rowHeight = 25;
+    const colWidths = [40, 80, 100, 70, 70, 80, 70, 80, 60, 80];
+    const headers = [
+      "No.",
+      "Contract No.",
+      "Description",
+      "Parties",
+      "Category",
+      "Department",
+      "Start Date",
+      "End Date",
+      "Status",
+      "Value",
+    ];
+
+    // Draw table headers
+    let y = tableTop;
+    doc.fontSize(8).font("Helvetica-Bold");
+
+    let x = 30;
+    headers.forEach((header, i) => {
+      doc.text(header, x, y, {
+        width: colWidths[i],
+        align: "left",
+      });
+      x += colWidths[i];
+    });
+
+    // Draw header line
+    y += 15;
+    doc
+      .moveTo(30, y)
+      .lineTo(30 + colWidths.reduce((a, b) => a + b, 0), y)
+      .stroke();
+
+    y += 5;
+
+    // Add contract data
+    doc.font("Helvetica").fontSize(7);
+
+    contracts.forEach((contract, index) => {
+      // Check if we need a new page
+      if (y > 500) {
+        doc.addPage();
+        y = 50;
+
+        // Redraw headers on new page
+        doc.fontSize(8).font("Helvetica-Bold");
+        let headerX = 30;
+        headers.forEach((header, i) => {
+          doc.text(header, headerX, y, {
+            width: colWidths[i],
+            align: "left",
+          });
+          headerX += colWidths[i];
+        });
+        y += 15;
+        doc
+          .moveTo(30, y)
+          .lineTo(30 + colWidths.reduce((a, b) => a + b, 0), y)
+          .stroke();
+        y += 5;
+        doc.font("Helvetica").fontSize(7);
+      }
+
+      x = 30;
+      const rowData = [
+        (index + 1).toString(),
+        getFieldValue(contract, "Contract Number", "N/A"),
+        getFieldValue(contract, "Contract Description", "N/A").substring(
+          0,
+          50
+        ) + "...",
+        getFieldValue(contract, "Parties", "N/A").substring(0, 30),
+        getFieldValue(contract, "category", "N/A"),
+        getFieldValue(contract, "Section Or Department", "N/A").substring(
+          0,
+          30
+        ),
+        formatDate(contract.startDate || contract["Start Date"]),
+        formatDate(contract.endDate || contract["End Date"]),
+        getFieldValue(contract, "status", "N/A"),
+        getFieldValue(contract, "contractAmount", "N/A").toString(),
+      ];
+
+      rowData.forEach((data, i) => {
+        doc.text(data, x, y, {
+          width: colWidths[i],
+          align: "left",
+        });
+        x += colWidths[i];
+      });
+
+      y += rowHeight;
+
+      // Draw row separator
+      doc
+        .moveTo(30, y - 5)
+        .lineTo(30 + colWidths.reduce((a, b) => a + b, 0), y - 5)
+        .stroke();
+    });
+
+    // Add footer
+    doc.fontSize(8).text(`Report generated by Contract Management System`, {
+      align: "center",
+    });
+
+    // Finalize the PDF
+    doc.end();
+  } catch (error) {
+    console.error("Error generating PDF report:", error);
+    if (!res.headersSent) {
+      res.status(500).json({
+        message: "Failed to generate PDF report",
+        error: error.message,
+      });
+    }
+  }
+}
+
+// Generate Excel Report
+async function generateExcelReport(req, res) {
+  try {
+    // Fetch all contracts
+    const contracts = await AllContracts.find(req.queryFilter)
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    // Prepare data for Excel
+    const excelData = contracts.map((contract, index) => ({
+      "No.": index + 1,
+      "Contract Number": getFieldValue(contract, "Contract Number"),
+      "Contract Description": getFieldValue(contract, "Contract Description"),
+      Parties: getFieldValue(contract, "Parties"),
+      Category: getFieldValue(contract, "category"),
+      "Section/Department": getFieldValue(contract, "Section Or Department"),
+      "Start Date": formatDate(contract.startDate || contract["Start Date"]),
+      "End Date": formatDate(contract.endDate || contract["End Date"]),
+      Status: getFieldValue(contract, "status"),
+      "Contract Amount": getFieldValue(contract, "contractAmount"),
+      "Payment Term": getFieldValue(contract, "paymentTerm"),
+      "Client Name": getFieldValue(contract, "clientName"),
+      "Client Email": getFieldValue(contract, "clientEmail"),
+      "Client Phone": getFieldValue(contract, "clientPhone"),
+      "Client Address": getFieldValue(contract, "clientAddress"),
+      "Client Location": getFieldValue(contract, "clientLocation"),
+      "Client Postal Code": getFieldValue(contract, "clientPostalCode"),
+      Term: getFieldValue(contract, "Term"),
+      Renewal: contract.renewal ? "Yes" : "No",
+      "Created By": getFieldValue(contract, "createdBy"),
+      Company: getFieldValue(contract, "company"),
+      "Created At": formatDate(contract.createdAt),
+      "Updated At": formatDate(contract.updatedAt),
+    }));
+
+    // Create workbook and worksheet
+    const workbook = xlsx.utils.book_new();
+    const worksheet = xlsx.utils.json_to_sheet(excelData);
+
+    // Set column widths
+    const columnWidths = [
+      { wch: 5 }, // No.
+      { wch: 20 }, // Contract Number
+      { wch: 50 }, // Contract Description
+      { wch: 30 }, // Parties
+      { wch: 15 }, // Category
+      { wch: 25 }, // Section/Department
+      { wch: 12 }, // Start Date
+      { wch: 12 }, // End Date
+      { wch: 12 }, // Status
+      { wch: 15 }, // Contract Amount
+      { wch: 15 }, // Payment Term
+      { wch: 25 }, // Client Name
+      { wch: 30 }, // Client Email
+      { wch: 15 }, // Client Phone
+      { wch: 40 }, // Client Address
+      { wch: 20 }, // Client Location
+      { wch: 15 }, // Client Postal Code
+      { wch: 15 }, // Term
+      { wch: 10 }, // Renewal
+      { wch: 25 }, // Created By
+      { wch: 20 }, // Company
+      { wch: 18 }, // Created At
+      { wch: 18 }, // Updated At
+    ];
+    worksheet["!cols"] = columnWidths;
+
+    // Add worksheet to workbook
+    xlsx.utils.book_append_sheet(workbook, worksheet, "Contracts");
+
+    // Create summary sheet
+    const statusCounts = contracts.reduce((acc, contract) => {
+      const status = contract.status || "Unknown";
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, {});
+
+    const summaryData = [
+      { Metric: "Total Contracts", Value: contracts.length },
+      { Metric: "Report Generated", Value: format(new Date(), "dd/MM/yyyy HH:mm") },
+      { Metric: "", Value: "" },
+      { Metric: "Status Breakdown", Value: "" },
+      ...Object.entries(statusCounts).map(([status, count]) => ({
+        Metric: status,
+        Value: count,
+      })),
+    ];
+
+    const summarySheet = xlsx.utils.json_to_sheet(summaryData);
+    summarySheet["!cols"] = [{ wch: 30 }, { wch: 20 }];
+    xlsx.utils.book_append_sheet(workbook, summarySheet, "Summary");
+
+    // Generate Excel file buffer
+    const excelBuffer = xlsx.write(workbook, {
+      type: "buffer",
+      bookType: "xlsx",
+    });
+
+    // Set response headers
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=contracts-report-${format(new Date(), "yyyy-MM-dd")}.xlsx`
+    );
+
+    // Send the Excel file
+    res.send(excelBuffer);
+  } catch (error) {
+    console.error("Error generating Excel report:", error);
+    res.status(500).json({
+      message: "Failed to generate Excel report",
+      error: error.message,
+    });
+  }
+}
+
+module.exports = {
+  generatePDFReport,
+  generateExcelReport,
+};
