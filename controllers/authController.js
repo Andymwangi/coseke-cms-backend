@@ -117,8 +117,17 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     const { email, password } = req.body;
     try {
+        console.log('Login attempt:', { email, passwordLength: password?.length });
         const user = await User.findOne({ email });
-        if (!user || !(await bcrypt.compare(password, user.password))) {
+        console.log('User found:', !!user);
+        if (!user) {
+            console.log('User not found');
+            return res.status(400).json({ msg: 'Your login Credentials are Invalid ❌❌' });
+        }
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log('Password match:', passwordMatch);
+        if (!passwordMatch) {
+            console.log('Password mismatch');
             return res.status(400).json({ msg: 'Your login Credentials are Invalid ❌❌' });
         }
 

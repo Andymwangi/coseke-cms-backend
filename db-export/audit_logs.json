@@ -1,0 +1,587 @@
+[
+  {
+    "_id": "66d7fd72437e34449f4ef9ac",
+    "method": "POST",
+    "url": "/submit-manual-contract",
+    "body": {
+      "category": "Software Licensing",
+      "Contract Number": "423144315TYEQYTD",
+      "Parties": "John Doe ,Jane Doe ",
+      "startDate": "2024-09-03",
+      "endDate": "2024-09-27",
+      "Section Or Department": "TEST",
+      "Term": "2 MONTH",
+      "Contract Description": "To bind your Express server to a specific IP address instead of just listening on a port, you'll need to specify the IP address when calling server.listen().",
+      "clientName": "John Doe ",
+      "clientAddress": "33",
+      "clientPostalCode": "001",
+      "clientLocation": "Nairobi",
+      "clientPhone": "+254745236462",
+      "clientEmail": "janedoe@gmail.com",
+      "paymentTerm": "Installment Payments",
+      "contractAmount": "1000000"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-04T06:25:54.065Z",
+    "__v": 0
+  },
+  {
+    "_id": "66db11fc53612b9605b785e3",
+    "method": "POST",
+    "url": "/submit-manual-contract",
+    "body": {
+      "category": "Hardware Maintenance and Support",
+      "Contract Number": "TRQE52365467345",
+      "Parties": "intelleX solutions,Coseke Limited",
+      "startDate": "2024-10-01",
+      "endDate": "2025-10-01",
+      "Section Or Department": "Technical Department",
+      "Term": "1 year",
+      "Contract Description": "Remember, if you make any changes to your React app, you'll need to rebuild it (npm run build in the client directory) and ensure the Nginx configuration is pointing to the updated build directory.",
+      "clientName": "Coseke Kenya Limited",
+      "clientAddress": "1708",
+      "clientPostalCode": "40200",
+      "clientLocation": "NAIROBI",
+      "clientPhone": "0796898753",
+      "clientEmail": "joshuamaeba@gmail.com",
+      "paymentTerm": "Payment on Completion",
+      "contractAmount": "4999"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-06T14:30:20.885Z",
+    "__v": 0
+  },
+  {
+    "_id": "66db17e453612b9605b789a1",
+    "method": "GET",
+    "url": "/undefined",
+    "params": {
+      "id": "undefined"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-06T14:55:32.341Z",
+    "__v": 0
+  },
+  {
+    "_id": "66db17e453612b9605b789aa",
+    "method": "GET",
+    "url": "/undefined",
+    "params": {
+      "id": "undefined"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-06T14:55:32.378Z",
+    "__v": 0
+  },
+  {
+    "_id": "66db17f753612b9605b789c7",
+    "method": "GET",
+    "url": "/66db12c653612b9605b78715",
+    "params": {
+      "id": "66db12c653612b9605b78715"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-06T14:55:51.082Z",
+    "__v": 0
+  },
+  {
+    "_id": "66db17f753612b9605b789d1",
+    "method": "GET",
+    "url": "/66db12c653612b9605b78715",
+    "params": {
+      "id": "66db12c653612b9605b78715"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-06T14:55:51.251Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e15ac6a13b81d404567b9d",
+    "method": "POST",
+    "url": "/submit-manual-contract",
+    "body": {
+      "category": "Service Level Agreements (SLAs)",
+      "Contract Number": "032",
+      "Parties": "Coseke Kenya Ltd,Kimisitu Sacco",
+      "startDate": "2024-08-01",
+      "endDate": "2025-07-31",
+      "Section Or Department": "Client Relations",
+      "Term": "1 Year",
+      "Contract Description": "Software and Hardware maintenance agreement",
+      "clientName": "Kimisitu Sacco",
+      "clientAddress": "10454",
+      "clientPostalCode": "00100",
+      "clientLocation": "Nairobi",
+      "clientPhone": "0709 136000",
+      "clientEmail": "ict@kimisitusacco.or.ke",
+      "paymentTerm": "Advance Payment",
+      "contractAmount": "421196"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-09-11T08:54:30.456Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e168f8a13b81d404567d02",
+    "method": "POST",
+    "url": "/submit-manual-contract",
+    "body": {
+      "category": "Service Level Agreements (SLAs)",
+      "Contract Number": "003",
+      "Parties": "Coseke,KWFT",
+      "startDate": "2024-04-01",
+      "endDate": "2025-03-31",
+      "Section Or Department": "Client Relations",
+      "Term": "1 Year",
+      "Contract Description": "Kodak Software Assurance Agreement",
+      "clientName": "Kenya Women Microfinance Bank PLC",
+      "clientAddress": "4179",
+      "clientPostalCode": "00506",
+      "clientLocation": "Nairobi",
+      "clientPhone": "0703067700",
+      "clientEmail": "fwaiganjo@kwftbank.com",
+      "paymentTerm": "Advance Payment",
+      "contractAmount": "2031618"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-09-11T09:55:04.497Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e182c3a13b81d404568405",
+    "method": "GET",
+    "url": "/66db12c653612b9605b78715",
+    "params": {
+      "id": "66db12c653612b9605b78715"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-09-11T11:45:07.320Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e182c3a13b81d40456840b",
+    "method": "GET",
+    "url": "/66db12c653612b9605b78715",
+    "params": {
+      "id": "66db12c653612b9605b78715"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-09-11T11:45:07.375Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e287ad0c8ad498717df40b",
+    "method": "GET",
+    "url": "/66d7ec40a2b9680e3d90d3c0",
+    "params": {
+      "id": "66d7ec40a2b9680e3d90d3c0"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-12T06:18:21.157Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e287ad0c8ad498717df415",
+    "method": "GET",
+    "url": "/66d7ec40a2b9680e3d90d3c0",
+    "params": {
+      "id": "66d7ec40a2b9680e3d90d3c0"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-12T06:18:21.249Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e2ea96057a71d6d10f8a89",
+    "method": "GET",
+    "url": "/66e18320a13b81d404568413",
+    "params": {
+      "id": "66e18320a13b81d404568413"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-12T13:20:22.982Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e2ea97057a71d6d10f8a93",
+    "method": "GET",
+    "url": "/66e18320a13b81d404568413",
+    "params": {
+      "id": "66e18320a13b81d404568413"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-12T13:20:23.063Z",
+    "__v": 0
+  },
+  {
+    "_id": "66e2eaa0057a71d6d10f8a9f",
+    "method": "PUT",
+    "url": "/66e18320a13b81d404568413",
+    "params": {
+      "id": "66e18320a13b81d404568413"
+    },
+    "body": {
+      "firstname": "Elizabeth ",
+      "lastname": "Njoroge",
+      "email": "elizabeth.njoroge@coseke.com",
+      "password": ""
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-09-12T13:20:32.349Z",
+    "__v": 0
+  },
+  {
+    "_id": "67039b54d2db689c0dfad877",
+    "method": "GET",
+    "url": "/undefined",
+    "params": {
+      "id": "undefined"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-10-07T08:27:00.958Z",
+    "__v": 0
+  },
+  {
+    "_id": "67039b54d2db689c0dfad879",
+    "method": "GET",
+    "url": "/undefined",
+    "params": {
+      "id": "undefined"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-10-07T08:27:00.971Z",
+    "__v": 0
+  },
+  {
+    "_id": "6703a0d82cc6c114d2a39522",
+    "method": "DELETE",
+    "url": "/67039b45d2db689c0dfad86b",
+    "params": {
+      "id": "67039b45d2db689c0dfad86b"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-10-07T08:50:32.135Z",
+    "__v": 0
+  },
+  {
+    "_id": "670e1be76be37368b6976ab9",
+    "method": "GET",
+    "url": "/6703a1342cc6c114d2a39529",
+    "params": {
+      "id": "6703a1342cc6c114d2a39529"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-10-15T07:38:15.743Z",
+    "__v": 0
+  },
+  {
+    "_id": "670e1be76be37368b6976ac3",
+    "method": "GET",
+    "url": "/6703a1342cc6c114d2a39529",
+    "params": {
+      "id": "6703a1342cc6c114d2a39529"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-10-15T07:38:15.890Z",
+    "__v": 0
+  },
+  {
+    "_id": "670f854c6be37368b6976b7e",
+    "method": "DELETE",
+    "url": "/6703a1342cc6c114d2a39529",
+    "params": {
+      "id": "6703a1342cc6c114d2a39529"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2024-10-16T09:20:12.817Z",
+    "__v": 0
+  },
+  {
+    "_id": "670f88686be37368b6976c1e",
+    "method": "DELETE",
+    "url": "/670f85836be37368b6976b85",
+    "params": {
+      "id": "670f85836be37368b6976b85"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-10-16T09:33:28.277Z",
+    "__v": 0
+  },
+  {
+    "_id": "673496428196920a0af2c23c",
+    "method": "POST",
+    "url": "/submit-bulk-contracts",
+    "body": {
+      "category": "Service Level Agreements (SLAs)"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-11-13T12:06:26.032Z",
+    "__v": 0
+  },
+  {
+    "_id": "673b11fdf960c20870145207",
+    "method": "POST",
+    "url": "/submit-bulk-contracts",
+    "body": {
+      "category": "SLAs"
+    },
+    "user": {
+      "firstname": "Joshua",
+      "lastname": "Nyamasege",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "joshua.nyamasege@coseke.com"
+    },
+    "timestamp": "2024-11-18T10:07:57.074Z",
+    "__v": 0
+  },
+  {
+    "_id": "691b43bac0733087ef7c51d7",
+    "method": "DELETE",
+    "url": "/66e18e49a13b81d40456c7c5",
+    "params": {
+      "id": "66e18e49a13b81d40456c7c5"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2025-11-17T15:48:10.223Z",
+    "__v": 0
+  },
+  {
+    "_id": "691b43c7c0733087ef7c51e3",
+    "method": "PUT",
+    "url": "/66d7ec40a2b9680e3d90d3c0/assign-role",
+    "params": {
+      "userId": "66d7ec40a2b9680e3d90d3c0"
+    },
+    "body": {
+      "role": "staff"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2025-11-17T15:48:23.678Z",
+    "__v": 0
+  },
+  {
+    "_id": "691b43d1c0733087ef7c51ee",
+    "method": "PUT",
+    "url": "/66db12c653612b9605b78715/assign-role",
+    "params": {
+      "userId": "66db12c653612b9605b78715"
+    },
+    "body": {
+      "role": "admin"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2025-11-17T15:48:33.072Z",
+    "__v": 0
+  },
+  {
+    "_id": "691b43d8c0733087ef7c51f9",
+    "method": "PUT",
+    "url": "/66e18c95a13b81d40456c7bd/assign-role",
+    "params": {
+      "userId": "66e18c95a13b81d40456c7bd"
+    },
+    "body": {
+      "role": "staff"
+    },
+    "user": {
+      "firstname": "Catherine",
+      "lastname": "Muhandia",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "catherine.muhandia@coseke.com"
+    },
+    "timestamp": "2025-11-17T15:48:40.652Z",
+    "__v": 0
+  },
+  {
+    "_id": "691c489b4388f51fcb5da809",
+    "method": "GET",
+    "url": "/66e18c95a13b81d40456c7bd",
+    "params": {
+      "id": "66e18c95a13b81d40456c7bd"
+    },
+    "user": {
+      "firstname": "Cyprian",
+      "lastname": "Mwaniki",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "cyprian.mwaniki@coseke.com"
+    },
+    "timestamp": "2025-11-18T10:21:15.021Z",
+    "__v": 0
+  },
+  {
+    "_id": "691c489b4388f51fcb5da813",
+    "method": "GET",
+    "url": "/66e18c95a13b81d40456c7bd",
+    "params": {
+      "id": "66e18c95a13b81d40456c7bd"
+    },
+    "user": {
+      "firstname": "Cyprian",
+      "lastname": "Mwaniki",
+      "company": "66d7ebf3a2b9680e3d90d3b9",
+      "role": "admin",
+      "email": "cyprian.mwaniki@coseke.com"
+    },
+    "timestamp": "2025-11-18T10:21:15.101Z",
+    "__v": 0
+  }
+]

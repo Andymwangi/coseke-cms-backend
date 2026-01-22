@@ -1,0 +1,14 @@
+{
+  "databaseName": "undefined",
+  "exportDate": "2026-01-22T18:37:31.670Z",
+  "collections": [
+    "allcontracts",
+    "comments",
+    "annotations",
+    "users",
+    "tenants",
+    "audit_logs",
+    "documents"
+  ],
+  "totalCollections": 7
+}

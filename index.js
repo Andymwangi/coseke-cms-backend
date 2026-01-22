@@ -26,10 +26,16 @@ const reportsRoutes = require("./routes/reportsRoutes");
 // Create an Express app
 const app = express();
 
-connectDB();
+connectDB('undefined');
 
 // Define allowed origins
-const allowedOrigins = ['http://localhost:3000', 'http://192.168.1.150:3000'];
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://192.168.1.150:3000',
+  'http://192.168.1.150',
+  'http://cms.coseke.cloud',
+  'https://cms.coseke.cloud'
+];
 
 // CORS configuration for Express
 app.use(cors({

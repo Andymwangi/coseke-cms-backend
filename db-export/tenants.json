@@ -1,0 +1,53 @@
+[
+  {
+    "_id": "66d7ebf3a2b9680e3d90d3b9",
+    "name": "Coseke Kenya",
+    "description": "The system is meant to Manage all contracts for Coseke Kenya Limited.",
+    "licenseKey": "LICENSE-06c44e72-6b08-4f81-bc7f-773e792fc97b",
+    "licenseType": "Enterprise",
+    "expirationDate": "2025-09-04T05:11:15.153Z",
+    "features": [
+      "feature1",
+      "feature2",
+      "feature3",
+      "feature4"
+    ],
+    "createdAt": "2024-09-04T05:11:15.194Z",
+    "updatedAt": "2024-09-04T05:11:15.194Z",
+    "__v": 0
+  },
+  {
+    "_id": "6703b4682cc6c114d2a39658",
+    "name": "Salaries and Remuneration Commission ",
+    "description": "The Salaries and Remuneration Commission (SRC) is established under Article 230 of the Constitution of Kenya, 2010, to set and regularly review the remuneration and benefits of all State officers, and advise the national and county governments on the remuneration and benefits of all other public officers.",
+    "licenseKey": "LICENSE-fd5bbb24-69b1-4a3d-a9f8-4066e5db8bb8",
+    "licenseType": "Enterprise",
+    "expirationDate": "2025-10-07T10:14:00.859Z",
+    "features": [
+      "feature1",
+      "feature2",
+      "feature3",
+      "feature4"
+    ],
+    "createdAt": "2024-10-07T10:14:00.868Z",
+    "updatedAt": "2024-10-07T10:14:00.868Z",
+    "__v": 0
+  },
+  {
+    "_id": "6703b6592cc6c114d2a39665",
+    "name": "Salaries and Remuneration Commission",
+    "description": "The Salaries and Remuneration Commission (SRC) is established under Article 230 of the Constitution of Kenya, 2010, to set and regularly review the remuneration and benefits of all State officers, and advise the national and county governments on the remuneration and benefits of all other public officers.",
+    "licenseKey": "LICENSE-14d6954d-18b8-449e-9b7b-b84c2200d513",
+    "licenseType": "Enterprise",
+    "expirationDate": "2025-10-07T10:22:17.679Z",
+    "features": [
+      "feature1",
+      "feature2",
+      "feature3",
+      "feature4"
+    ],
+    "createdAt": "2024-10-07T10:22:17.683Z",
+    "updatedAt": "2024-10-07T10:22:17.683Z",
+    "__v": 0
+  }
+]

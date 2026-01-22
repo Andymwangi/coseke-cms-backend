@@ -7,11 +7,11 @@ require('dotenv').config();
 const createAdminUser = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect('mongodb://localhost:27017/undefined', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('MongoDB connected...');
+    console.log('MongoDB connected to undefined database...');
 
     // Admin user details
     const adminEmail = 'admin@coseke.com';

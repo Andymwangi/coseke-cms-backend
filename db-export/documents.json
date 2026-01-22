@@ -1,0 +1,637 @@
+[
+  {
+    "_id": "66de832ad032af0cf51e09fc",
+    "title": "Test Document",
+    "user": "66d7ec40a2b9680e3d90d3c0",
+    "collaborators": [
+      "66db12c653612b9605b78715"
+    ],
+    "createdAt": "2024-09-09T05:10:02.841Z",
+    "updatedAt": "2024-09-18T15:21:45.133Z",
+    "__v": 1,
+    "data": {
+      "ops": [
+        {
+          "insert": "I understand your frustration. Let's analyze this error message and try to pinpoint the issue.\nThe error message indicates that:\nYour client application is running on "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "http://192.168.1.150:3000"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "It's trying to connect to a Socket.IO server at "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "http://localhost:5000"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "The server is responding with an 'Access-Control-Allow-Origin' header set to "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "http://localhost:3000"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "This mismatch is causing the CORS error. The server is allowing requests from "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "http://localhost:3000"
+        },
+        {
+          "insert": ", but not from "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "http://192.168.1.150:3000"
+        },
+        {
+          "insert": ".\nThere are a few potential reasons for this:\nThe server code we updated might not have been applied correctly or the server wasn't restarted after the changes."
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "There might be a proxy or middleware in your setup that's overriding the CORS settings we've put in place."
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "The client-side code might be trying to connect to "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "localhost"
+        },
+        {
+          "insert": " instead of the server's IP address."
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Let's try to address these issues:\nDouble-check your server code. Make sure it looks exactly like the code I provided in the previous message."
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Restart your server after making any changes."
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "In your client-side code (likely in TextEditor.jsx), check how you're initializing the Socket.IO connection. It should look something like this:"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "javascript"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Copy"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "const socket = io('http://192.168.1.150:5000', {"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "  withCredentials: true"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "});"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Not:\njavascript"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Copy"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "const socket = io('http://localhost:5000', {"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "  withCredentials: true"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "});"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "If you're using a development server like Create React App, you might need to set up a proxy. In your "
+        },
+        {
+          "attributes": {
+            "code": true
+          },
+          "insert": "package.json"
+        },
+        {
+          "insert": ", add:"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "json"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Copy"
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "\"proxy\": \"http://192.168.1.150:5000\""
+        },
+        {
+          "attributes": {
+            "code-block": "plain"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "If you're using nginx or another reverse proxy, make sure it's configured to pass the correct headers."
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "To help diagnose this further, could you please provide:\nThe relevant part of your client-side code where you're initializing the Socket.IO connection?"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Any server logs that appear when you try to connect?"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Confirmation that you've restarted the server after making changes?"
+        },
+        {
+          "attributes": {
+            "list": "ordered"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "With this information, we can better pinpoint the source of the problem and resolve it\n"
+        }
+      ]
+    }
+  },
+  {
+    "_id": "66de8432cccbd9d237b482c5",
+    "title": "Test2",
+    "user": "66d7ec40a2b9680e3d90d3c0",
+    "collaborators": [],
+    "createdAt": "2024-09-09T05:14:26.142Z",
+    "updatedAt": "2024-09-26T04:43:39.462Z",
+    "__v": 0,
+    "data": {
+      "ops": [
+        {
+          "insert": "Employment Contract"
+        },
+        {
+          "attributes": {
+            "header": 2
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "This Employment Contract (\"Contract\") is made and entered into as of [DATE] by and between [COMPANY NAME], a [STATE] [ENTITY TYPE] (\"Company\"), and [EMPLOYEE NAME], residing at [ADDRESS] (\"Employee\").\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "1. Employment"
+        },
+        {
+          "insert": "\nCompany agrees to employ Employee and Employee agrees to be employed by Company, as a [JOB TITLE] (\"Position\").\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "2. Commencement Date"
+        },
+        {
+          "insert": "\nThe Employee's employment shall commence on [START DATE] (\"Commencement Date\").\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "3. Duties"
+        },
+        {
+          "insert": "\nEmployee shall perform the duties and responsibilities of the Position, as may be assigned by Company from time to time, in accordance with Company's policies and procedures.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "4. Compensation"
+        },
+        {
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "Salary:"
+        },
+        {
+          "insert": " Employee shall be paid a salary of [AMOUNT] per [PAY FREQUENCY] (\"Salary\")."
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "Benefits:"
+        },
+        {
+          "insert": " Employee will be eligible for the following benefits, subject to Company policies and procedures:"
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "[LIST BENEFITS: Health Insurance, Dental Insurance, Vision Insurance, Paid Time Off, Sick Leave, Disability Insurance, Life Insurance, Retirement Plan, etc.]"
+        },
+        {
+          "attributes": {
+            "indent": 1,
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "Compensation Review:"
+        },
+        {
+          "insert": " Employee's salary will be reviewed annually on [DATE] or within [NUMBER] months of the Anniversary Date of the commencement of the employment."
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "5. Term of Employment"
+        },
+        {
+          "insert": "\nThis Contract shall be for a period of [DURATION] (\"Term\"). This Contract may be terminated by either party upon [NOTICE PERIOD] written notice to the other party.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "6. Termination"
+        },
+        {
+          "insert": "\nThis Contract may be terminated by either party for any reason, with or without cause, upon [NOTICE PERIOD] written notice to the other party.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "7. Confidentiality"
+        },
+        {
+          "insert": "\nEmployee agrees to hold confidential all information obtained by Employee in the course of employment with Company, including but not limited to:\nTrade secrets"
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Confidential financial information"
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Customer lists"
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Proprietary information"
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "insert": "Other confidential information"
+        },
+        {
+          "attributes": {
+            "list": "bullet"
+          },
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "8. Non-Solicitation"
+        },
+        {
+          "insert": "\nEmployee agrees not to solicit any customer or employee of Company for a period of [NUMBER] years after the termination of this Contract.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "9. Non-Competition"
+        },
+        {
+          "insert": "\nEmployee agrees not to compete with Company in any business that is similar to the business of Company for a period of [NUMBER] years after the termination of this Contract within a [RADIUS] radius of Company's principal place of business.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "10. Independent Contractor"
+        },
+        {
+          "insert": "\nEmployee acknowledges that they are an employee of Company and not an independent contractor.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "11. Governing Law"
+        },
+        {
+          "insert": "\nThis Contract shall be governed by and construed in accordance with the laws of the State of [STATE].\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "12. Entire Agreement"
+        },
+        {
+          "insert": "\nThis Contract constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior or contemporaneous communications, representations, or agreements, whether oral or written.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "13. Amendments"
+        },
+        {
+          "insert": "\nThis Contract may be amended only by a written instrument signed by both parties.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "14. Severability"
+        },
+        {
+          "insert": "\nIf any provision of this Contract is held to be invalid or unenforceable, such provision shall be struck and the remaining provisions shall remain in full force and effect.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "15. Notices"
+        },
+        {
+          "insert": "\nAll notices and other communications hereunder shall be in writing and shall be deemed to have been duly given when delivered personally, sent by certified or registered mail, return receipt requested, postage prepaid, or sent by overnight courier service, addressed as follows:\nIf to Company: [Company Name] [Address]\nIf to Employee: [Employee Name] [Address]\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "16. Waiver"
+        },
+        {
+          "insert": "\nNo waiver of any breach of any provision of this Contract shall be deemed a waiver of any subsequent breach.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "IN WITNESS WHEREOF,"
+        },
+        {
+          "insert": " the parties have executed this Contract as of the date first written above.\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "[Company Name]"
+        },
+        {
+          "insert": "\nBy: [Authorized Representative Name]\nTitle: [Title]\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "[Employee Name]"
+        },
+        {
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "[Signature]"
+        },
+        {
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "Date"
+        },
+        {
+          "insert": "\n"
+        },
+        {
+          "attributes": {
+            "bold": true
+          },
+          "insert": "Please Note:"
+        },
+        {
+          "insert": " This is a sample employment contract and may not be suitable for all situations. You should consult with an attorney to ensure that your employment contract is appropriate for your specific needs.\n"
+        }
+      ]
+    }
+  }
+]
