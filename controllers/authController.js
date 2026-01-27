@@ -182,8 +182,8 @@ exports.verifyOtp = async (req, res) => {
             secret,
             encoding: 'base32',
             token: otp,
-            window: 1,
-            step: 300 // 5 minutes
+            window: 2,
+            step: 300 // 5 minutes, window: 2 allows ~15 min tolerance for email delays
         });
 
         if (!isVerified) {
