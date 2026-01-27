@@ -9,6 +9,9 @@ const crypto = require('crypto');
 
 const jwtSign = promisify(jwt.sign);
 
+// Store recent OTP requests to prevent duplicates
+const otpRequestCache = new Map();
+
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -131,6 +134,18 @@ exports.login = async (req, res) => {
             return res.status(400).json({ msg: 'Your login Credentials are Invalid ❌❌' });
         }
 
+        // Check if OTP was recently sent to prevent duplicates
+        const cacheKey = `otp_${user.id}`;
+        const lastOtpTime = otpRequestCache.get(cacheKey);
+        const now = Date.now();
+
+        if (lastOtpTime && (now - lastOtpTime) < 30000) { // 30 seconds cooldown
+            return res.json({
+                msg: 'OTP already sent. Please check your email or wait 30 seconds to resend. ✅✅',
+                userId: user.id
+            });
+        }
+
         const otp = speakeasy.totp({
             secret: process.env.OTP_SECRET + user.email,
             encoding: 'base32',
@@ -138,6 +153,11 @@ exports.login = async (req, res) => {
         });
 
         await sendOTP(user.email, otp);
+
+        // Cache this OTP request
+        otpRequestCache.set(cacheKey, now);
+        // Clear cache after 5 minutes
+        setTimeout(() => otpRequestCache.delete(cacheKey), 300000);
 
         res.json({
             msg: 'OTP sent to your email ✅✅',
