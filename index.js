@@ -1,3 +1,4 @@
+require("dotenv").config(); // Load environment variables first
 const express = require("express");
 const cors = require("cors");
 const http = require("http");
@@ -17,37 +18,38 @@ const authMiddleware = require("./middleware/authMiddleware");
 const tenantMiddleware = require("./middleware/tenantMiddleware");
 const updateContractStatus = require("./controllers/updateContractStatus");
 const { startScheduler } = require("./tasks/backgroundTasks");
-const switchTenantDatabase = require("./middleware/tenantMiddleware");
 const filterByTenant = require("./middleware/filterTenant");
 const geminiRoutes = require("./routes/geminiRoutes");
-const annotationsRoutes = require('./routes/annotations');
+const annotationsRoutes = require("./routes/annotations");
 const reportsRoutes = require("./routes/reportsRoutes");
 
 // Create an Express app
 const app = express();
 
-connectDB('undefined');
+connectDB("undefined");
 
 // Define allowed origins
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://192.168.1.150:3000',
-  'http://192.168.1.150',
-  'http://cms.coseke.cloud',
-  'https://cms.coseke.cloud'
+  "http://localhost:3000",
+  "http://192.168.1.150:3000",
+  "http://192.168.1.150",
+  "http://cms.coseke.cloud",
+  "https://cms.coseke.cloud",
 ];
 
 // CORS configuration for Express
-app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  }),
+);
 
 const server = http.createServer(app);
 
@@ -56,7 +58,7 @@ const io = socketIo(server, {
   cors: {
     origin: allowedOrigins,
     methods: ["GET", "POST"],
-    credentials: true
+    credentials: true,
   },
 });
 
@@ -69,13 +71,12 @@ app.use("/api/auth", authRoutes);
 
 // Apply middleware to routes
 app.use(authMiddleware);
-app.use(switchTenantDatabase);
 app.use(tenantMiddleware);
 app.use(filterByTenant);
 
 // Apply middleware to routes
 app.use("/api/documents", documentRoutes);
-app.use('/api', annotationsRoutes);
+app.use("/api", annotationsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/gemini", geminiRoutes);
 app.use("/api/bulk", bulkRoutes);
@@ -86,9 +87,11 @@ app.use("/api/users", userRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
-const HOST = '0.0.0.0'; // Listen on all available network interfaces
+const HOST = "0.0.0.0"; // Listen on all available network interfaces
 
-server.listen(PORT, HOST, () => console.log(`Server running on http://${HOST}:${PORT}`));
+server.listen(PORT, HOST, () =>
+  console.log(`Server running on http://${HOST}:${PORT}`),
+);
 
 // Socket.io logic
 const defaultValue = "";
