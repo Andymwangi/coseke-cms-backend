@@ -235,11 +235,14 @@ async function submitManualContract(req, res) {
 // Fetch all contracts from the db
 async function getAllContracts(req, res) {
   try {
+    console.log('[getAllContracts] queryFilter:', req.queryFilter);
+    
     // Find contracts, sort by updatedAt in descending order, and use lean()
     const contracts = await AllContracts.find(req.queryFilter)
       .sort({ updatedAt: -1 }) // Sort by updatedAt in descending order (most recent first)
       .lean();
 
+    console.log('[getAllContracts] Found contracts:', contracts.length);
     res.json(contracts);
   } catch (err) {
     console.error("Error in getAllContracts:", err);

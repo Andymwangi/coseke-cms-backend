@@ -14,6 +14,7 @@ const filterByTenant = async (req, res, next) => {
 
     // Define filtering criteria for routes that need tenant isolation
     req.queryFilter = { company: tenantId };
+    console.log('[filterTenant] Setting queryFilter:', req.queryFilter);
 
     next();
   } catch (error) {
