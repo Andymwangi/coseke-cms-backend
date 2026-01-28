@@ -71,7 +71,8 @@ app.use("/api/auth", authRoutes);
 
 // Apply middleware to routes
 app.use(authMiddleware);
-app.use(tenantMiddleware);
+// Note: tenantMiddleware disabled - system uses single database 'undefined'
+// app.use(tenantMiddleware);
 app.use(filterByTenant);
 
 // Apply middleware to routes

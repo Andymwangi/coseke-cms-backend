@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const User = require('../models/User');
-const Tenant = require('../models/Tenant'); // Import the Tenant model
-const connectDB = require('../config/db'); // Import the connectDB function
 
 dotenv.config();
 
@@ -26,15 +24,9 @@ const isAuthenticated = async (req, res, next) => {
         }
         req.user = user;
 
-        // Fetch tenant details based on the user's company (tenant) information
-        const tenant = await Tenant.findById(user.company); // Assuming user.company is the tenant's _id
-
-        if (!tenant) {
-            return res.status(404).json({ msg: 'Tenant not found' });
-        }
-
-        // Connect to the tenant's database
-        await connectDB(tenant.name); // Assume tenant.name is used as the database name
+        // Note: Tenant information is available via user.company
+        // All data is stored in a single database ('undefined')
+        // No need to switch databases per tenant
 
         next();
     } catch (err) {
