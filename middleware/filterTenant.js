@@ -9,12 +9,8 @@ const filterByTenant = async (req, res, next) => {
       return res.status(400).json({ error: 'Tenant ID not provided' });
     }
 
-    // Ensure tenant exists
-    const tenant = await Tenant.findById(tenantId);
-    console.log('Tenant found in tenants:', tenant);
-    if (!tenant) {
-      return res.status(404).json({ error: 'Tenant not found' });
-    }
+    // Tenant validation is already done via user.company in authMiddleware
+    // No need to query Tenant model again
 
     // Define filtering criteria for routes that need tenant isolation
     req.queryFilter = { company: tenantId };
