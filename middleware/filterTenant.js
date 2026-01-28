@@ -13,7 +13,8 @@ const filterByTenant = async (req, res, next) => {
     // No need to query Tenant model again
 
     // Define filtering criteria for routes that need tenant isolation
-    req.queryFilter = { company: tenantId };
+    // Convert ObjectId to string to match the database field type
+    req.queryFilter = { company: tenantId.toString() };
     console.log('[filterTenant] Setting queryFilter:', req.queryFilter);
 
     next();
