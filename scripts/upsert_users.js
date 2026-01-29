@@ -56,28 +56,28 @@ const upsertUsers = async () => {
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
 
-            let user = await User.findOne({ email: email.toLowerCase() });
+            // Check existence for logging purposes
+            const existingUser = await User.findOne({ email: email.toLowerCase() });
 
-            if (user) {
-                user.firstname = firstname;
-                user.lastname = lastname;
-                user.password = hashedPassword;
-                user.company = tenant._id;
-                user.role = role;
-                
-                await user.save();
+            // Perform atomic upsert
+            await User.findOneAndUpdate(
+                { email: email.toLowerCase() },
+                {
+                    $set: {
+                        firstname,
+                        lastname,
+                        password: hashedPassword,
+                        company: tenant._id,
+                        role: role
+                    },
+                    $setOnInsert: { phone: '' }
+                },
+                { upsert: true, new: true, runValidators: true }
+            );
+
+            if (existingUser) {
                 console.log(`✅ User Updated: ${email} (${role})`);
             } else {
-                user = new User({
-                    firstname,
-                    lastname,
-                    email: email.toLowerCase(),
-                    password: hashedPassword,
-                    company: tenant._id,
-                    role: role,
-                    phone: '' // Optional default
-                });
-                await user.save();
                 console.log(`✅ User Created: ${email} (${role})`);
             }
         }
